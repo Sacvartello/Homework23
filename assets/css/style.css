@@ -1,0 +1,39 @@
+body{
+    background-color: lightgoldenrodyellow;
+}
+form, ol{
+    background-color: lightblue;
+}
+form{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 20vh;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+input, button{
+    height: 15%;
+}
+.list-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ol{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30vw;
+    margin-top: 30px;
+  }
+li{
+    color: rgb(73, 73, 73);
+}
+.createOl{
+    min-height: 60vh;
+    padding: 10px;
+    border: 1px solid black;
+}
