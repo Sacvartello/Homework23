@@ -1,25 +1,40 @@
-const form = document.querySelector('form')
-const ol = document.querySelector('ol')
-const arr1 = []
-function handler1(event){
-    event.preventDefault()
-    const form = event.target
-    const inputUserName= form.user.value
-    checkText(inputUserName)
-}
-function checkText(value) {
-    if(value===''){
-        alert('Line is empty!')
-    } else{
-        addToDoc(value, arr1)
+const form = document.querySelector('form');
+const list = document.querySelector('ol');
+
+let todoArray = [];
+let counter = 0;
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const {todo: {value: text}} = event.target;
+    if (text){
+        todoArray.push({
+            text: text,
+            id: counter++
+        });
     }
+    updateView(todoArray);
+});
+
+
+
+function updateView(todoArray) {
+    const liArray = todoArray.map(todoObj => {
+        const li = document.createElement('li');
+        li.append(todoObj.text);
+        li.dataset.id = todoObj.id;
+        const button = document.createElement('button');
+        button.textContent = 'x';
+        button.addEventListener('click', deleteButtonHandler)
+        li.append(button);
+        return li;
+    });
+    list.replaceChildren(...liArray);
 }
-function addToDoc(value, arr){
-    arr.push(value)
-    const li = document.createElement('li')
-    li.textContent = value
-    ol.className ='createOl'
-    ol.append(li)
-    console.log(arr);
+
+
+function deleteButtonHandler(event) {
+  const parentLi = event.target.parentElement;
+  todoArray = todoArray.filter(elem => elem.id !== Number(parentLi.dataset.id));
+  updateView(todoArray);
 }
-form.addEventListener('submit', handler1)

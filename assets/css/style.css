@@ -16,7 +16,7 @@ form{
 }
 input, button{
     height: 15%;
-}
+  }
 .list-wrapper{
     display: flex;
     justify-content: center;
@@ -28,12 +28,10 @@ ol{
     align-items: center;
     width: 30vw;
     margin-top: 30px;
-  }
-li{
-    color: rgb(73, 73, 73);
-}
-.createOl{
     min-height: 60vh;
     padding: 10px;
     border: 1px solid black;
+}
+li{
+    color: rgb(73, 73, 73);
 }
